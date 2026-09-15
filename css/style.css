@@ -152,6 +152,13 @@ button, input, select, textarea {
   font-size: 0.85rem;
   color: var(--text-muted);
   padding: 8px 0;
+  display: none; /* Mobilde gizli */
+}
+
+@media (min-width: 768px) {
+  .top-bar {
+    display: block;
+  }
 }
 
 .top-bar-inner {
@@ -182,7 +189,7 @@ button, input, select, textarea {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(11, 15, 25, 0.95);
+  background: rgba(11, 15, 25, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -192,22 +199,43 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 64px; /* Mobilde daha kompakt */
+}
+
+@media (min-width: 768px) {
+  .header-inner {
+    height: 80px;
+  }
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .brand-logo {
+    gap: 14px;
+  }
 }
 
 .logo-img {
-  width: 54px;
-  height: 54px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   object-fit: cover;
   border: 2px solid var(--primary);
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.25);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
+}
+
+@media (min-width: 768px) {
+  .logo-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.25);
+  }
 }
 
 .brand-text {
@@ -216,19 +244,31 @@ button, input, select, textarea {
 }
 
 .brand-name {
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: #ffffff;
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
 
+@media (min-width: 768px) {
+  .brand-name {
+    font-size: 1.35rem;
+  }
+}
+
 .brand-sub {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--primary);
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .brand-sub {
+    font-size: 0.75rem;
+  }
 }
 
 .nav-menu {
