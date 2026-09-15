@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   serviceButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const serviceName = btn.getAttribute('data-service') || 'Mekanik Bakım';
-      const defaultPhone = '905418320044'; // Uğur Usta (Varsayılan Hat)
+      const defaultPhone = '905541641044'; // Uğur Usta (Varsayılan Hat)
       const msg = `Merhaba Uğur Usta, uguroto.net üzerinden *${serviceName}* hizmetiniz için fiyat ve randevu bilgisi almak istiyorum.`;
       const url = `https://wa.me/${defaultPhone}?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
