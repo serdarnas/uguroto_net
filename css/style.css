@@ -1446,7 +1446,8 @@ textarea.form-control {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 68px;
+  height: calc(68px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   background: rgba(11, 15, 25, 0.98);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -1463,16 +1464,18 @@ textarea.form-control {
 
 .bottom-bar-action {
   flex: 1;
+  min-height: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--text-light);
   text-decoration: none;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
+  touch-action: manipulation;
 }
 
 .bottom-bar-action:last-child {
@@ -1480,7 +1483,7 @@ textarea.form-control {
 }
 
 .bottom-bar-action svg {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .bottom-bar-action.call {
@@ -1495,3 +1498,71 @@ textarea.form-control {
 .bottom-bar-action.map {
   color: #fb923c;
 }
+
+/* Footer Web Geliştirici İmzası */
+.footer-developer {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+
+@media (min-width: 768px) {
+  .footer-developer {
+    flex-direction: row;
+  }
+}
+
+.developer-info {
+  color: var(--text-muted);
+}
+
+.developer-info strong {
+  color: #ffffff;
+}
+
+.developer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dev-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  min-height: 40px;
+  transition: var(--transition);
+}
+
+.dev-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.dev-btn.dev-wa {
+  background: rgba(37, 211, 102, 0.12);
+  border-color: rgba(37, 211, 102, 0.35);
+  color: #4ade80;
+}
+
+.dev-btn.dev-wa:hover {
+  background: var(--whatsapp);
+  color: #ffffff;
+}
+

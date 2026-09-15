@@ -10,23 +10,43 @@ document.addEventListener('DOMContentLoaded', () => {
     currentYearSpan.textContent = new Date().getFullYear();
   }
 
-  // 2. Mobil Menü Açma / Kapama
+  // 2. Mobil Menü Açma / Kapama & Dış Tıklama Kontrolü
   const mobileToggle = document.getElementById('mobileToggle');
   const mobileNav = document.getElementById('mobileNav');
 
   if (mobileToggle && mobileNav) {
-    mobileToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      const isOpen = mobileNav.classList.contains('open');
-      mobileToggle.setAttribute('aria-expanded', isOpen);
+    const toggleMenu = (open) => {
+      const shouldOpen = typeof open === 'boolean' ? open : !mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', shouldOpen);
+      mobileToggle.setAttribute('aria-expanded', shouldOpen);
+      document.body.style.overflow = shouldOpen ? 'hidden' : '';
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
 
     // Menü bağlantılarına tıklandığında menüyü kapat
     const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
+        toggleMenu(false);
       });
+    });
+
+    // Dışarı tıklandığında menüyü kapat
+    document.addEventListener('click', (e) => {
+      if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== mobileToggle) {
+        toggleMenu(false);
+      }
+    });
+
+    // ESC tuşuna basıldığında menüyü kapat
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        toggleMenu(false);
+      }
     });
   }
 
